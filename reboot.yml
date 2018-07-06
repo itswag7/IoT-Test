@@ -8,6 +8,11 @@
     #- name: Upgrade all packages
     #  yum: name=* state=latest
 
+    - name: Checking if we need a reboot
+      # NOTE: this string check is wrong so always comes back as "yes"
+      register: reboot
+      ignore_errors: true
+
     - name: Reboot required
       command: shutdown -r now "Ansible kernel update applied"
       async: 1
