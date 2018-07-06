@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+
+  tasks:
+    #- name: Upgrade all packages
+    #  yum: name=* state=latest
+
+    - name: Reboot required
+      command: shutdown -r now "Ansible kernel update applied"
+      async: 1
+      poll: 0
+      ignore_errors: true
+      when: reboot.changed
+
+    - name: Waiting for server to come back up
+      local_action:
+        wait_for
+        host="{{ inventory_hostname }}"
+        port=22
+        delay=10
+        timeout=60
+      become: false
+      when: reboot.changed
