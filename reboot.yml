@@ -10,6 +10,7 @@
 
     - name: Checking if we need a reboot
       # NOTE: this string check is wrong so always comes back as "yes"
+      shell: if [ $(rpm -q kernel | sort -Vr | head -n 1) != kernel-$(uname -r) ]; then echo "yes"; fi
       register: reboot
       ignore_errors: true
 
