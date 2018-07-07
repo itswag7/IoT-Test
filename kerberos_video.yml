@@ -5,7 +5,6 @@
   - name: Pull Kerberos Video
     docker_image:
       name: kerberos/kerberos
-    become: true
  
   - name: Start Kerberos
     docker_container:
@@ -15,4 +14,4 @@
       ports:
        - "80:80"
        - "8889:8889"
-    become: true
+
