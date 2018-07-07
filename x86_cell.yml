@@ -1,0 +1,8 @@
+---
+- hosts: all
+
+  tasks:
+  - name: Install libqmi
+    yum:
+      name: libqmi-utils
+    become: true
