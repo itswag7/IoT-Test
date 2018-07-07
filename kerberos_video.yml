@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  tasks:
+  - name: Pull Kerberos Video
+    docker_image:
+      name: kerberos/kerberos
+    become: true
+ 
+  - name: Start Kerberos
+    docker_container:
+      name: Kerberos_Cam
+      image: kerberos/kerberos
+      state: started
+      ports:
+       - "80:80"
+       - "8889:8889"
+    become: true
