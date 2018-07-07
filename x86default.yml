@@ -9,6 +9,16 @@
   - name: Install Docker
     shell: curl -fsSL https://get.docker.com/ | sh
 
+  - name: Install Python-pip
+    yum:
+      name: python-pip
+      state: latest
+    become: true
+
+  - pip:
+      name: docker-py
+    become: true
+
   - name: Download telegraf rpm
     get_url:
       url:  https://dl.influxdata.com/telegraf/releases/telegraf-1.7.0-1.x86_64.rpm
