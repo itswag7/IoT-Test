@@ -8,7 +8,7 @@
 
   - name: CopyXOM Wifi
     copy:
-      src: /home/djhedge/git_repo_prod/kerberos_configs/
+      src: /home/djhedge/git_repo_prod/kerberos_configs
       dest: /tmp
       become: true
  
