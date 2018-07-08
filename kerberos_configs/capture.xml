@@ -2,9 +2,9 @@
 <captures>
 
     <IPCamera>
-        <url type="text">rtsp://admin:888888@192.168.0.13/tcp/av0_1</url>
-        <frameWidth type="number">640</frameWidth>
-        <frameHeight type="number">480</frameHeight>
+        <url type="text">rtsp://admin:phi22lat@192.168.40.5:554/cam/realmonitor?channel=1&subtype=0</url>
+        <frameWidth type="number">1280</frameWidth>
+        <frameHeight type="number">960</frameHeight>
         <delay type="number">500</delay>
         <angle type="number">0</angle>
     </IPCamera>
