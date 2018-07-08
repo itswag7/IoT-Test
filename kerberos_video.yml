@@ -6,7 +6,7 @@
     docker_image:
       name: kerberos/kerberos
 
-  - name: CopyXOM Wifi
+  - name: Copy Video Configs
     copy:
       src: /home/djhedge/git_repo_prod/kerberos_configs
       dest: /tmp
