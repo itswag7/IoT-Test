@@ -10,7 +10,7 @@
     copy:
       src: /home/djhedge/git_repo_prod/kerberos_configs
       dest: /var/tmp
-      become: true
+    become: true
  
   - name: Start Kerberos
     docker_container:
