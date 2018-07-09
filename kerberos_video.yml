@@ -20,4 +20,5 @@
       ports:
        - "80:80"
        - "8889:8889"
-
+      volumes:
+       - "/var/tmp/kerberos_config:/etc/opt/kerberosio/config:ro"
