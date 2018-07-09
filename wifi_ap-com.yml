@@ -2,9 +2,9 @@
 - hosts: 192.168.1.42
 
   tasks:
-#  - name: Request Received
-#    command: pb push -d 0 "WIFI AP request received"
-#    delegate_to: 127.0.0.1
+  - name: Request Received
+    command: /home/djhedge/.local/bin/pb push -d 0 "WIFI AP request received"
+    delegate_to: 127.0.0.1
   - name: Copying wifi image to destination
     copy:
       src: /home/djhedge/docker_images/wifiap/xom_wifi_arm.tar
