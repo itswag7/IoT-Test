@@ -2,9 +2,9 @@
 <kerberos>
 
     <instance>
-        <name type="text">DockerExample</name>
+        <name type="text">frontdoor</name>
         <logging type="bool">false</logging>
-        <timezone type="timezone">America/Chicago</timezone>
+        <timezone type="timezone">America-Chicago</timezone>
         <capture file="capture.xml">IPCamera</capture>
         <stream file="stream.xml">Mjpg</stream>
         <condition file="condition.xml" type="multiple">Enabled</condition>
