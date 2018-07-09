@@ -6,7 +6,6 @@
     copy:
       src: /home/djhedge/docker_images/iotdatasim/iotdatasim.tar
       dest: /tmp
-    become: true
   - name: Run the command if the specified file does not exist.
     command: "docker load -i /tmp/iotdatasim.tar"
     become: true
