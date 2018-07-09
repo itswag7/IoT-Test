@@ -9,7 +9,7 @@
   - name: Copy Video Configs
     copy:
       src: /home/djhedge/git_repo_prod/kerberos_configs
-      dest: /var/tmp
+      dest: /opt
     become: true
  
   - name: Start Kerberos
@@ -21,4 +21,4 @@
        - "80:80"
        - "8889:8889"
       volumes:
-       - "/var/tmp/kerberos_configs:/etc/opt/kerberosio/config"
+       - "/opt/kerberos_configs:/etc/opt/kerberosio/config"
