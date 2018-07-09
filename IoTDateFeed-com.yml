@@ -11,6 +11,7 @@
   - name: Start IoT Data Simulator
     docker_container:
       image: iotdatasim
+      name: IoTDataSimx86
       state: started
   - name: Removing existing war
     file:
