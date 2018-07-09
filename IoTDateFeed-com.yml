@@ -13,6 +13,7 @@
     docker_container:
       image: iotdatasim
       state: started
+    become: true
   - name: Removing existing war
     file:
       path: /tmp/iotdatasim.tar
