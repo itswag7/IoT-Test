@@ -5,10 +5,10 @@
   - name: Loading IoT Data Simulator
     copy:
       src: /home/djhedge/docker_images/iotdatasim/iotdatasim.tar
-      dest: /var/tmp
+      dest: /tmp
     become: true
   - name: Run the command if the specified file does not exist.
-    command: "docker load -i /var/tmp/iotdatasim.tar"
+    command: "docker load -i /tmp/iotdatasim.tar"
     become: true
   - name: Start IoT Data Simulator
     docker_container:
@@ -17,5 +17,5 @@
     become: true
   - name: Removing existing war
     file:
-      path: /var/tmp/iotdatasim.tar
+      path: /tmp/iotdatasim.tar
       state: absent
