@@ -2,7 +2,7 @@
 <captures>
 
     <IPCamera>
-        <url type="text">rtsp://admin:phi22lat@192.168.40.5:554/cam/realmonitor?channel=1&subtype=0</url>
+        <url type="text"></url>
         <frameWidth type="number">1280</frameWidth>
         <frameHeight type="number">960</frameHeight>
         <delay type="number">500</delay>
