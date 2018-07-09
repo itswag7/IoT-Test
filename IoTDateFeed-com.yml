@@ -6,9 +6,8 @@
     copy:
       src: /home/djhedge/docker_images/iotdatasim/iotdatasim.tar
       dest: /tmp
-  - name: Run the command if the specified file does not exist.
+  - name: Importing IoT Data Simulator into local docker repo.
     command: "docker load -i /tmp/iotdatasim.tar"
-    become: true
   - name: Start IoT Data Simulator
     docker_container:
       image: iotdatasim
