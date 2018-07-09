@@ -1,0 +1,40 @@
+---
+- hosts: 192.168.1.42
+
+  tasks:
+  - name: Request Received
+    command: pb push -d 0 "WIFI AP request received"
+    delegate_to: 127.0.0.1
+  - name: Copying wifi image to destination
+    copy:
+      src: /home/djhedge/ansible/xom_wifi_arm.tar
+      dest: /tmp
+    become: true
+  - name: Generate and copy wifi config
+    copy:
+      src: /home/djhedge/ansible/wificfg.json
+      dest: /tmp
+    become: true
+  - name: Load Docker file into images
+    command: "docker load -i /tmp/xom_wifi_arm.tar"
+    become: true
+  - name: Start XOM IoT Wifi AP
+    docker_container:
+      name: xom_iot_wifi
+      image: xom_wifi3
+      state: started
+      network_mode: host
+      volumes: 
+        - /tmp/wificfg.json:/cfg/wificfg.json
+      privileged: yes
+    become: true
+  - name: QR Code Generate
+    command: qrencode -o wifi.png 'WIFI:S:ComuLab-hardpi-01;T:<WPA>;P:TRct87QsevSsgmPW;;'
+    delegate_to: 127.0.0.1
+  - name: AP Completed
+    command: pb push -d 0 "Request completed"
+    delegate_to: 127.0.0.1
+  - name: Send QR Code
+    command: pb push --file /home/djhedge/ansible/wifi.png
+    delegate_to: 127.0.0.1
+
