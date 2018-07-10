@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+
+  - name: upgrade all packages
+    yum:
+      name: '*'
+      state: latest
+
+  - name: Install Spacewalk Repo
+    yum:
+      name: http://yum.spacewalkproject.org/2.7/RHEL/7/x86_64/spacewalk-repo-2.7-2.el7.noarch.rpm
+      state: present
+
+
+  - name: Install EPEL repo
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      state: present
+
+  - name: upgrade all packages
+    yum:
+      name: spacewalk-setup-postgresql
+      state: latest
+
+  - name: upgrade all packages
+    yum:
+      name: spacewalk-postgresql
+      state: latest
