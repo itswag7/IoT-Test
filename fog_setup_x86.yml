@@ -20,10 +20,12 @@
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       state: present
 
-  - name: Run the command if the specified file does not exist.
-    command: (cd /etc/yum.repos.d && curl -O https://copr.fedorainfracloud.org/coprs/g/spacewalkproject/java-packages/repo/epel-7/group_spacewalkproject-java-packages-epel-7.repo)
-
-  - name: upgrade all packages
+  - name: Change the working directory to somedir/ before executing the command.
+    shell: curl -O https://copr.fedorainfracloud.org/coprs/g/spacewalkproject/java-packages/repo/epel-7/group_spacewalkproject-java-packages-epel-7.repo
+    args:
+      chdir: /etc/yum.repos.d
+   
+  - name:  upgrade all packages
     yum:
       name: spacewalk-setup-postgresql
       state: latest
