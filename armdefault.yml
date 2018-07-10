@@ -1,39 +1,35 @@
 ---
-- hosts: 192.168.1.43
+- hosts: all
 
   tasks:
-  - name: Install epel-release
-    yum:
-      name: epel-release
-      state: latest
-    become: true
+  - name: Install Updates
+    apt:
+      name: "*"
+      state: latest  
+
+  - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+    shell: curl -sSL https://get.docker.com | sh
+
+
   - name: Install Docker
     yum:
       name: docker
       state: latest
     become: true
-  - name: Install Python-pip
-    yum:
-      name: python-pip
-      state: latest
-    become: true
-  - pip:
-      name: docker-py
-    become: true
   - name: Download telegraf rpm
     get_url:
-      url:  https://dl.influxdata.com/telegraf/releases/telegraf-1.7.0-1.x86_64.rpm
+      url:  https://dl.influxdata.com/telegraf/releases/telegraf_1.7.1-1_armel.deb
       dest: /tmp
   - name: Install Telegraf
     yum:
-      name: /tmp/telegraf-1.7.0-1.x86_64.rpm
+      name: /tmp/telegraf-1.7.1-1_armel.deb
       state: present
-    become: true
+
   - name: Copy Telegraf config
     copy:
       src: /home/djhedge/ansible-centos-HPEGL10/telegraf.conf
       dest: /etc/telegraf/telegraf.conf
-    become: true
+
   - systemd:
       name: docker
       state: started
