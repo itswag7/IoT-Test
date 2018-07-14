@@ -5,5 +5,5 @@
   - name: Start Deployment
     shell: python test.py
     args:
-      chdir: /home/djhedge/pybusylight/
+      chdir: /home/djhedge/pyBusylight/
   become: true
