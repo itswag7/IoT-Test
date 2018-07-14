@@ -3,5 +3,7 @@
 
   tasks:
   - name: Start Deployment
-    shell: python /home/djhedge/pybusylight/test.py
+    shell: python test.py
+    args:
+      chdir: /home/djhedge/pybusylight/
   become: true
