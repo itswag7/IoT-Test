@@ -6,4 +6,6 @@
     shell: python test.py
     args:
       chdir: /home/djhedge/pyBusylight/
+    async: 45
+    poll: 0
   become: true
