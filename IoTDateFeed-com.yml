@@ -8,7 +8,7 @@
       chdir: /home/djhedge/pyBusylight/
     async: 450
     poll: 0
-  become: true
+    become: true
 
   - name: Loading IoT Data Simulator
     copy:
@@ -33,4 +33,4 @@
       chdir: /home/djhedge/pyBusylight/
     async: 450
     poll: 0
-  become: true
+    become: true
