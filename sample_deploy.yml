@@ -9,11 +9,3 @@
     async: 450
     poll: 0
   become: true
-
-  - name: Finish Deployment
-    shell: python done.py
-    args:
-      chdir: /home/djhedge/pyBusylight/
-    async: 45
-    poll: 0
-  become: true
