@@ -2,6 +2,14 @@
 - hosts: all
 
   tasks:
+  - name: Start Deployment
+    shell: python test.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+  become: true
+
   - name: Loading IoT Data Simulator
     copy:
       src: /home/djhedge/docker_images/iotdatasim/iotdatasim.tar
@@ -17,3 +25,12 @@
     file:
       path: /tmp/iotdatasim.tar
       state: absent
+
+
+  - name: Finish Deployment
+    shell: python done.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+  become: true
