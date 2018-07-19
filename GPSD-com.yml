@@ -28,7 +28,8 @@
        - "/dev/ttyUSB0:/dev/ttyUSB0"
       ports:
        - "2947:2947"
-      debug: yes
+      env:
+         D2_VAR: /dev/ttyUSB0
     become: true
 
   - name: Remove tar
