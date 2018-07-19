@@ -1,0 +1,45 @@
+
+---
+- hosts: all
+
+  tasks:
+  - name: Start Deployment
+    shell: python test.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+    become: true
+
+  - name: Loading GPSD
+    copy:
+      src: /home/djhedge/docker_images/gps/gpsd.tar
+      dest: /tmp
+
+  - name: Importing GPSD into local docker repo.
+    command: "docker load -i /tmp/gpsd.tar"
+
+  - name: Start IoT Data Simulator
+    docker_container:
+      image: gpsd
+      name: gpsd
+      state: started
+      restart-policy: always
+      devices:
+       - "/dev/ttyusb0:/dev/ttyusb0"
+      ports:
+       - "2947:2947:
+
+  - name: Remove tar
+    file:
+      path: /tmp/gpsd.tar
+      state: absent
+
+
+  - name: Finish Deployment
+    shell: python done.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+    become: true
