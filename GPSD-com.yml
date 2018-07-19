@@ -25,7 +25,7 @@
       name: gpsd
       state: started
       devices:
-       - "/dev/ttyusb0:/dev/ttyusb0"
+       - "/dev/ttyUSB0:/dev/ttyUSB0"
       ports:
        - "2947:2947"
       debug: yes
