@@ -44,3 +44,5 @@
     async: 450
     poll: 0
     become: true
+
+  - import_tasks: GPSD_Collect-com.yml
