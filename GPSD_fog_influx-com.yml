@@ -1,0 +1,28 @@
+
+---
+- hosts: all
+
+  tasks:
+  - name: Loading GPSD Influx for Fog
+    copy:
+      src: /home/djhedge/docker_images/gps_influx_backend/gps_fog_influx.tar
+      dest: /tmp
+
+  - name: Importing GPSD Influx for Fog to local docker repo.
+    command: "docker load -i /tmp/gps_fog_influx.tar"
+
+  - name: Start GPSD Influx for Fog
+    docker_container:
+      image: gps_fog_influx 
+      name: gps_fog_influx
+      state: started
+      restart_policy: always
+#      restart_retries: 10
+    become: true
+
+  - name: Remove tar
+    file:
+      path: /tmp/gps_fog_influx.tar
+      state: absent
+
+ 
