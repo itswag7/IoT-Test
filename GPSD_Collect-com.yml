@@ -1,0 +1,40 @@
+
+---
+- hosts: all
+
+  tasks:
+  - name: Start Deployment
+    shell: python test.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+    become: true
+
+  - name: Loading GPSD collector
+    copy:
+      src: /home/djhedge/docker_images/gps_collect/gps_collect.tar
+      dest: /tmp
+
+  - name: Importing GPSD collector into local docker repo.
+    command: "docker load -i /tmp/gps_collect.tar"
+
+  - name: Start GPSD Collector
+    docker_container:
+      image: gps_collect
+      name: gps_collect
+      state: started
+      network_mode: host 
+     
+  - name: Remove tar
+    file:
+      path: /tmp/gps_collect.tar
+      state: absent
+
+  - name: Finish Deployment
+    shell: python done.py
+    args:
+      chdir: /home/djhedge/pyBusylight/
+    async: 450
+    poll: 0
+    become: true
