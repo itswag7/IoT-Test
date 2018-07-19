@@ -24,18 +24,16 @@
       image: gpsd
       name: gpsd
       state: started
-      restart_policy: always
       devices:
        - "/dev/ttyusb0:/dev/ttyusb0"
       ports:
        - "2947:2947"
-      privileged: yes
+      debug: yes
 
   - name: Remove tar
     file:
       path: /tmp/gpsd.tar
       state: absent
-
 
   - name: Finish Deployment
     shell: python done.py
