@@ -31,7 +31,7 @@
       env:
          D2_VAR: /dev/ttyUSB0
       restart_policy: always
-      restart_retries: 10
+#      restart_retries: 10
     become: true
 
   - name: Remove tar
