@@ -28,7 +28,7 @@
       devices:
        - "/dev/ttyusb0:/dev/ttyusb0"
       ports:
-       - "2947:2947:
+       - "2947:2947"
 
   - name: Remove tar
     file:
