@@ -29,6 +29,7 @@
        - "/dev/ttyusb0:/dev/ttyusb0"
       ports:
        - "2947:2947"
+      privileged: yes
 
   - name: Remove tar
     file:
