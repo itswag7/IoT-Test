@@ -29,6 +29,7 @@
       ports:
        - "2947:2947"
       debug: yes
+    become: true
 
   - name: Remove tar
     file:
