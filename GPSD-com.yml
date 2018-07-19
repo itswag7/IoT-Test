@@ -24,7 +24,7 @@
       image: gpsd
       name: gpsd
       state: started
-      restart-policy: always
+      restart_policy: always
       devices:
        - "/dev/ttyusb0:/dev/ttyusb0"
       ports:
