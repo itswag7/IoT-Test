@@ -25,7 +25,8 @@
       name: gps_collect
       state: started
       network_mode: host 
-     
+      restart_policy: always
+      restart_retries: 10     
   - name: Remove tar
     file:
       path: /tmp/gps_collect.tar
