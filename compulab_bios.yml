@@ -2,7 +2,7 @@
 - hosts: all
 
   tasks:
-  - become: yes
+  become: yes
 
   - name: Check that the somefile.conf exists
     stat:
