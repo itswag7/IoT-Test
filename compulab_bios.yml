@@ -1,0 +1,38 @@
+---
+- hosts: all
+
+  tasks:
+
+  - name: Check that the somefile.conf exists
+    stat:
+      path: /boot/efi/EFI/update
+    register: stat_update_result
+
+  - name: Create the file, if it doesnt exist already
+    stat:
+      path: /boot/efi/EFI/centos/orig
+    register: stat_orig_result 
+
+  - name: Create the file, if it doesnt exist already
+    stat:
+      path: /boot/efi/EFI/centos/orig/grubx64.efi
+    register: stat_grubxorig_result
+
+  - name: Create the file, if it doesnt exist already
+    stat:
+      path: /boot/efi/EFI/centos/startup.nsh
+    register: stat_startup_result
+
+
+  - name: example copying file with owner and permissions
+    copy:
+      src: /home/djhedge/compulab/bios.bin
+      dest: /boot/efi/efi/update
+
+
+  - name: Rebooting host
+    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
+
+  - wait_for_connection:
+    delay: 90
+    timeout: 600
