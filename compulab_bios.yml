@@ -33,6 +33,12 @@
       dest: /tmp
     become: yes
 
+  - name: example copying file with owner and permissions
+    copy:
+      src: /tmp/bios.bin
+      dest: /boot/efi/EFI/update
+    become: yes
+
   - name: Rebooting host
     shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
     become: yes
