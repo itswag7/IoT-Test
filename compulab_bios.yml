@@ -30,7 +30,7 @@
   - name: example copying file with owner and permissions
     copy:
       src: /home/djhedge/compulab/bios.bin
-      dest: /boot/efi/EFI/update
+      dest: /tmp
     become: yes
 
   - name: Rebooting host
