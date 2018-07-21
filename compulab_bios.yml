@@ -2,6 +2,7 @@
 - hosts: all
 
   tasks:
+  - become: true
 
   - name: Check that the somefile.conf exists
     stat:
