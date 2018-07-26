@@ -8,7 +8,7 @@
 
   - name: Copy Video Configs
     copy:
-      src: /opt/git_hub/IoT-Test/kerberos_configs
+      src: /opt/kerberos_configs
       dest: /opt
     become: true
  
