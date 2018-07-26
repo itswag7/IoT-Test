@@ -8,7 +8,7 @@
 
   - name: Copy Video Configs
     copy:
-      src: /home/djhedge/git_repo_prod/kerberos_configs
+      src: /opt/git_hub/IoT-Test/kerberos_configs
       dest: /opt
     become: true
  
