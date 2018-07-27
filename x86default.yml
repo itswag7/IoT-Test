@@ -51,6 +51,7 @@
       group: docker
       state: directory
       mode: 0777
+    become: true
 
   - name: Download telegraf rpm
     get_url:
