@@ -7,7 +7,24 @@
     become: true
 
   - name: Install Docker
-    shell: curl -fsSL https://get.docker.com/ | sh
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+
+  - name: Add repository
+    yum_repository:
+      name: docker
+      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+
+  - name: Install Python-pip
+    yum:
+      name: docker-ce
+      state: latest
+    become: true
 
   - name: Install epel-release
     yum:
@@ -24,6 +41,12 @@
   - pip:
       name: docker-py
     become: true
+
+  - file:
+      path: /opt/xom
+      owner: iotadmin
+      group: root
+      mode: 01777
 
   - name: Download telegraf rpm
     get_url:
