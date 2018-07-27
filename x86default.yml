@@ -14,11 +14,13 @@
       - yum-utils
       - device-mapper-persistent-data
       - lvm2
+    become: true
 
   - name: Add repository
     yum_repository:
       name: docker
       baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+    become: true
 
   - name: Install Python-pip
     yum:
