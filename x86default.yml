@@ -6,7 +6,7 @@
     yum: name=* state=latest
     become: true
 
-  - name: Install Docker
+  - name: Install Docker reqs
     yum:
       name: "{{ packages }}"
     vars:
@@ -16,14 +16,14 @@
       - lvm2
     become: true
 
-  - name: Add repository
+  - name: Add docker repository
     yum_repository:
       name: docker
       description: Docker repo
       baseurl: https://download.docker.com/linux/centos/docker-ce.repo
     become: true
 
-  - name: Install Python-pip
+  - name: Install docker
     yum:
       name: docker-ce
       state: latest
