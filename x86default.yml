@@ -48,8 +48,9 @@
   - file:
       path: /opt/xom
       owner: iotadmin
-      group: root
-      mode: 01777
+      group: docker
+      state: directory
+      mode: 0777
 
   - name: Download telegraf rpm
     get_url:
