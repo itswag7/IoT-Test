@@ -16,12 +16,11 @@
       - lvm2
     become: true
 
-  - name: Add docker repository
-    yum_repository:
-      name: docker-ce-stable
-      description: Docker repo
-      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
-    become: true
+  - name: Add Docker repo
+    get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docer-ce.repo
+    become: yes
 
   - name: Install docker
     yum:
