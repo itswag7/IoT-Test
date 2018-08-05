@@ -4,7 +4,7 @@
 
   tasks:
 
-  - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+  - name: Download and install Docker.
     shell: curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
 
   - name: Download telegraf rpm
@@ -17,20 +17,14 @@
       url: https://www.compulab.com/wp-content/uploads/2018/05/iot-gate-rpi_raspbian_2018-05-13.zip
       dest: /tmp
 
-  - file:
-      path: /tmp/rpi_drivers
-      owner: iotadmin
-      group: docker
-      state: directory
-      mode: 0777
-    become: true
-
-
-  - name: Extract foo.tgz into /var/lib/foo
+  - name: Extract RPi drivers
     unarchive:
       src: /tmp/iot-gate-rpi_raspbian_2018-05-13.zip
-      dest: /tmp/rpi_drivers
+      dest: /tmp
       remote_src: yes
+
+  - name: Install RPi Drivers
+    shell: /tmp/iot-gate-rpi-raspbian/install-script.sh
 
   - name: Install Telegraf
     apt:
