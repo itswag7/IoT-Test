@@ -9,7 +9,12 @@
 
   - name: Download telegraf rpm
     get_url:
-      url:  https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_amdhf.deb
+      url: https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_armhf.deb 
+      dest: /tmp
+
+  - name: Download telegraf rpm
+    get_url:
+      url: https://www.compulab.com/wp-content/uploads/2018/05/iot-gate-rpi_raspbian_2018-05-13.zip
       dest: /tmp
 
   - name: Install Telegraf
