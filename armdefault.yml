@@ -12,14 +12,14 @@
       url: https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_armhf.deb 
       dest: /tmp
 
-  - name: Download telegraf rpm
+  - name: Download RPi drivers
     get_url:
       url: https://www.compulab.com/wp-content/uploads/2018/05/iot-gate-rpi_raspbian_2018-05-13.zip
       dest: /tmp
 
   - name: Install Telegraf
     yum:
-      name: /tmp/telegraf_1.7.2-1_amdhf.deb
+      name: /tmp/telegraf_1.7.2-1_armhf.deb
       state: present
 
   - systemd:
@@ -33,3 +33,4 @@
       state: started
       enabled: True
     become: true
+
