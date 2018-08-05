@@ -18,8 +18,8 @@
       dest: /tmp
 
   - name: Install Telegraf
-    yum:
-      name: /tmp/telegraf_1.7.2-1_armhf.deb
+    apt:
+      deb: /tmp/telegraf_1.7.2-1_armhf.deb
       state: present
 
   - systemd:
