@@ -9,12 +9,12 @@
 
   - name: Download telegraf rpm
     get_url:
-      url:  https://dl.influxdata.com/telegraf/releases/telegraf_1.7.1-1_armel.deb
+      url:  https://dl.influxdata.com/telegraf/releases/telegraf_1.7.2-1_amdhf.deb
       dest: /tmp
 
   - name: Install Telegraf
     yum:
-      name: /tmp/telegraf-1.7.1-1_armel.deb
+      name: /tmp/telegraf_1.7.2-1_amdhf.deb
       state: present
 
   - systemd:
