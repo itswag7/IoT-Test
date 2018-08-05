@@ -17,6 +17,12 @@
       url: https://www.compulab.com/wp-content/uploads/2018/05/iot-gate-rpi_raspbian_2018-05-13.zip
       dest: /tmp
 
+  - name: Extract foo.tgz into /var/lib/foo
+    unarchive:
+      src: /tmp/iot-gate-rpi_raspbian_2018-05-13.zip
+      dest: /tmp/rpi_drivers
+      remote_src: yes
+
   - name: Install Telegraf
     apt:
       deb: /tmp/telegraf_1.7.2-1_armhf.deb
