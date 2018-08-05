@@ -23,8 +23,30 @@
       dest: /tmp
       remote_src: yes
 
-  - name: Install RPi Drivers
-    shell: sh /tmp/iot-gate-rpi-raspbian/install-script.sh
+  - name: Install RPi drivers (1/5)
+    apt: 
+      deb: /tmp/iot-gate-rpi-raspbian/iot-gate-dt.deb
+      state: present
+
+  - name Install RPi drivers (2/5)
+    apt:
+      deb: /tmp/iot-gate-rpi-raspbian/iot-gate-eth.deb
+      state: present
+
+  - name Install RPi drivers (3/5)
+    apt:
+      deb: /tmp/iot-gate-rpi-raspbian/iot-gate-serial.deb
+      state: present 
+
+  - name Install RPi drivers (4/5)
+    apt:
+      deb: /tmp/iot-gate-rpi-raspbian/rpi3-modem.deb
+      state: present
+
+  - name Install RPi drivers (5/5)
+    apt:
+      deb: /tmp/iot-gate-rpi-raspbian/rpi3-rtc.deb
+      state: present
 
   - name: Install Telegraf
     apt:
