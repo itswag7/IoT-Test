@@ -24,7 +24,7 @@
       remote_src: yes
 
   - name: Install RPi Drivers
-    shell: /tmp/iot-gate-rpi-raspbian/install-script.sh
+    shell: sh /tmp/iot-gate-rpi-raspbian/install-script.sh
 
   - name: Install Telegraf
     apt:
