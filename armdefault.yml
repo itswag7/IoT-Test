@@ -17,6 +17,15 @@
       url: https://www.compulab.com/wp-content/uploads/2018/05/iot-gate-rpi_raspbian_2018-05-13.zip
       dest: /tmp
 
+  - file:
+      path: /tmp/rpi_drivers
+      owner: iotadmin
+      group: docker
+      state: directory
+      mode: 0777
+    become: true
+
+
   - name: Extract foo.tgz into /var/lib/foo
     unarchive:
       src: /tmp/iot-gate-rpi_raspbian_2018-05-13.zip
