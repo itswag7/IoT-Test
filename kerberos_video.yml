@@ -10,12 +10,12 @@
     file:
       path: /opt/xom/kerberos
       state: directory
-
-  - name: Copy Video Configs
-    copy:
-      src: /opt/kerberos/kerberos_configs
-      dest: /opt
-    become: true
+#
+#  - name: Copy Video Configs
+#    copy:
+#      src: /opt/kerberos/kerberos_configs
+#      dest: /opt
+#    become: true
  
   - name: Start Kerberos
     docker_container:
