@@ -19,7 +19,7 @@
  
   - name: Start Kerberos
     docker_container:
-      name: Kerberos_Cam
+      name: {{ tenant_camera }}
       image: kerberos/kerberos
       state: started
       ports:
