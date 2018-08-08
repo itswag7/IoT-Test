@@ -6,6 +6,11 @@
     docker_image:
       name: kerberos/kerberos
 
+  - name: Create Kerberos directory
+    file:
+      path: /opt/xom/kerberos
+      state: directory
+
   - name: Copy Video Configs
     copy:
       src: /opt/kerberos/kerberos_configs
@@ -21,4 +26,4 @@
        - "80:80"
        - "8889:8889"
       volumes:
-       - "/opt/kerberos_configs:/etc/opt/kerberosio/config"
+       - "/opt/xom/kerberos/configs:/etc/opt/kerberosio/config"
