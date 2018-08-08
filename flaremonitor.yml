@@ -20,4 +20,5 @@
       volumes:
        - /opt/xom/flaremonitor/{{tenant_name}}/src
        - /opt/xom/flaremonitor/{{tenant_name}}/out
+      command: python /src/flaremonitor.py
     become: true
