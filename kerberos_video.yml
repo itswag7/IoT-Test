@@ -8,7 +8,7 @@
 
   - name: Create Kerberos directory
     file:
-      path: /opt/xom/kerberos
+      path: /opt/xom/kerberos/{{tenant_camera}}/configs
       state: directory
 #
 #  - name: Copy Video Configs
@@ -26,4 +26,4 @@
        - "80:80"
        - "8889:8889"
       volumes:
-       - "/opt/xom/kerberos/configs:/etc/opt/kerberosio/config"
+       - "/opt/xom/kerberos/{{tenant_camera}}/configs:/etc/opt/kerberosio/config"
