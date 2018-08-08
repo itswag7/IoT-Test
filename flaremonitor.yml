@@ -3,21 +3,21 @@
 
   tasks:
   - file:
-      path: /opt/xom/flaremonitor/src
+      path: /opt/xom/flaremonitor/{{tenant_name}}/src
       state: directory
       mode: 0755
 
   - file:
-      path: /opt/xom/flaremonitor/out
+      path: /opt/xom/flaremonitor/{{tenant_name}}/out
       state: directory
       mode: 0755
 
   - name: Pull Flaremonitor
     docker_container:
-      name: Master_influxdb
-      image: influxdb
+      name: "{{tenant_name}}"
+      image: flaremonitor:1.3
       state: started
       volumes:
-       - /opt/xom/flaremonitor/src
-       - /opt/xom/flaremonitor/out
+       - /opt/xom/flaremonitor/{{tenant_name}}/src
+       - /opt/xom/flaremonitor/{{tenant_name}}/out
     become: true
