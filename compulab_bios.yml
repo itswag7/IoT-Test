@@ -23,7 +23,7 @@
     get_url:
       url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/x86_bios.bin
       dest: /tmp/x86_bios.bin
-      checksum: md5:cc3899ed65c3f287bddf9b5c2b5d1b41
+      checksum: md5:c4d3b6b843413d9718a2357a9f90d50c
     become: yes
     
   - name: Download grubx64.efi 
