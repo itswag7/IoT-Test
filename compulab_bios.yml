@@ -2,47 +2,49 @@
 - hosts: all
 
   tasks:
+  - name: Create Update Folder
+    file:
+     path: /boot/efi/EFI/update
+     state: directory    
+    become: yes
     
-  - name: Check that the somefile.conf exists
-    stat:
-      path: /boot/efi/EFI/update
-    register: stat_update_result
-    become: yes
+  - name: Create Update Folder
+    file:
+     path: /boot/efi/EFI/centos/orig
+     state: directory    
+    become: yes    
+   
+  - name: Move grubx64.efi
+    command: mv /boot/efi/EFI/centos/grubx64.efi /boot/efi/EFI/centos/orig/grubx64.efi
+  
+  - name: Download BIOS 
+    get_url:
+      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/x86_bios.bin
+      dest: /boot/efi/EFI/update/x86_bios.bin
+      checksum: md5:cc3899ed65c3f287bddf9b5c2b5d1b41
+      
+   - name: Download grubx64.efi 
+    get_url:
+      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/grubx64.efi
+      dest: /boot/efi/EFI/centos/grubx64.efi
+      checksum: md5:c100999ee5aab596e3a3d60432ab55b8
+ 
+    - name: Download afuefix64.efi  
+    get_url:
+      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/afuefix64.efi
+      dest: /boot/efi/EFI/update/afuefix64.efi
+      checksum: md5:c5de6e70f49f67a35c4ee2941a7d4caf
+      
+    - name: Download startup.nsh  
+    get_url:
+      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/startup.nsh
+      dest: /boot/efi/EFI/centos/startup.nsh
+      checksum: md5:488b339bc4c8273741b041c5753a29af
+  
+#  - name: Rebooting host
+#    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
+#    become: yes
 
-  - name: Create the file, if it doesnt exist already
-    stat:
-      path: /boot/efi/EFI/centos/orig
-    register: stat_orig_result 
-    become: yes
-
-  - name: Create the file, if it doesnt exist already
-    stat:
-      path: /boot/efi/EFI/centos/orig/grubx64.efi
-    register: stat_grubxorig_result
-    become: yes
-
-  - name: Create the file, if it doesnt exist already
-    stat:
-      path: /boot/efi/EFI/centos/startup.nsh
-    register: stat_startup_result
-    become: yes
-
-  - name: example copying file with owner and permissions
-    copy:
-      src: /home/djhedge/compulab/bios.bin
-      dest: /tmp
-    become: yes
-
-  - name: example copying file with owner and permissions
-    copy:
-      src: /tmp/bios.bin
-      dest: /boot/efi/EFI/update
-    become: yes
-
-  - name: Rebooting host
-    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
-    become: yes
-
-  - wait_for_connection:
-    delay: 90
-    timeout: 600
+ #- wait_for_connection:
+ #   delay: 90
+ #   timeout: 600
