@@ -8,22 +8,16 @@
 
   - name: Create Kerberos directory
     file:
-      path: /opt/xom/kerberos/{{tenant_camera}}/configs
+      path: /opt/xom/kerberos/{{tenant_name_camera}}/configs
       state: directory
-   
-  - name: Download kerberos configs
-    get_url:
-      url: https://github.com/kerberos-io/docker/tree/master/bin/template
-      dest: /opt/xom/kerberos/{{tenant_camera}}/configs
-      mode: 0440
-  
+ 
   - name: Start Kerberos
     docker_container:
-      name: "{{ tenant_camera }}"
+      name: "{{ tenant_name_camera }}"
       image: kerberos/kerberos
       state: started
       ports:
        - "80:80"
        - "8889:8889"
       volumes:
-       - "/opt/xom/kerberos/{{tenant_camera}}/configs:/etc/opt/kerberosio/config"
+       - "/opt/xom/kerberos/{{tenant_name_camera}}/configs:/etc/opt/kerberosio/config"
