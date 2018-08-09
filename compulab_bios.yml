@@ -62,6 +62,11 @@
   - name: Move startup.nsh 
     command: mv /tmp/startup.nsh  /boot/efi/EFI/centos/startup.nsh
     become: yes  
+    
+  - name: Clean tmp directory  
+    shell: /bin/rm -rf /tmp/*
+    become: yes  
+
 #  - name: Rebooting host
 #    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
 #    become: yes
