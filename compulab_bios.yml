@@ -16,6 +16,7 @@
    
   - name: Move grubx64.efi
     command: mv /boot/efi/EFI/centos/grubx64.efi /boot/efi/EFI/centos/orig/grubx64.efi
+    ignore_errors: yes
     become: yes
     
   - name: Download BIOS 
