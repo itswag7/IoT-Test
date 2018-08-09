@@ -21,28 +21,28 @@
     
   - name: Download BIOS 
     get_url:
-      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/x86_bios.bin
+      url: https://github.com/itswag7/IoT-Test/raw/master/AMI_BIOS/x86_bios.bin
       dest: /tmp/x86_bios.bin
       checksum: md5:c4d3b6b843413d9718a2357a9f90d50c
     become: yes
     
   - name: Download grubx64.efi 
     get_url:
-      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/grubx64.efi
+      url: https://github.com/itswag7/IoT-Test/raw/master/AMI_BIOS/grubx64.efi
       dest: /tmp/grubx64.efi
       checksum: md5:c100999ee5aab596e3a3d60432ab55b8
     become: yes
     
   - name: Download afuefix64.efi  
     get_url:
-      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/afuefix64.efi
+      url: https://github.com/itswag7/IoT-Test/raw/master/AMI_BIOS/afuefix64.efi
       dest: /tmp/afuefix64.efi
       checksum: md5:c5de6e70f49f67a35c4ee2941a7d4caf
     become: yes
     
   - name: Download startup.nsh  
     get_url:
-      url: https://github.com/itswag7/IoT-Test/blob/master/AMI_BIOS/startup.nsh
+      url: https://github.com/itswag7/IoT-Test/raw/master/AMI_BIOS/startup.nsh
       dest: /tmp/startup.nsh
       checksum: md5:488b339bc4c8273741b041c5753a29af
     become: yes
