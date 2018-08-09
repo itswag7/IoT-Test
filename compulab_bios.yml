@@ -67,10 +67,10 @@
     shell: /bin/rm -rf /tmp/*
     become: yes  
 
-#  - name: Rebooting host
-#    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
-#    become: yes
+  - name: Rebooting host
+    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
+    become: yes
 
- #- wait_for_connection:
- #   delay: 90
- #   timeout: 600
+  - wait_for_connection:
+    delay: 90
+    timeout: 600
