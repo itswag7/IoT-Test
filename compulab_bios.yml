@@ -36,12 +36,20 @@
       dest: /tmp/grubx64.efi
       checksum: md5:c100999ee5aab596e3a3d60432ab55b8
     become: yes
-    
+
+  - name: Move grubx64
+    command: mv /tmp/grubx64.efi /boot/efi/EFI/centos/grubx64.efi
+    become: yes
+
   - name: Download afuefix64.efi  
     get_url:
       url: https://github.com/itswag7/IoT-Test/raw/master/AMI_BIOS/afuefix64.efi
       dest: /tmp/afuefix64.efi
       checksum: md5:c5de6e70f49f67a35c4ee2941a7d4caf
+    become: yes
+ 
+  - name: Move afuefix64.efi
+    command: mv /tmp/afuefix64.efi /boot/efi/EFI/update/afuefix64.efi
     become: yes
     
   - name: Download startup.nsh  
@@ -50,7 +58,10 @@
       dest: /tmp/startup.nsh
       checksum: md5:488b339bc4c8273741b041c5753a29af
     become: yes
-  
+    
+  - name: Move startup.nsh 
+    command: mv /tmp/startup.nsh  /boot/efi/EFI/centos/startup.nsh
+    become: yes  
 #  - name: Rebooting host
 #    shell: 'shutdown -r +1 "Reboot triggered by Ansible"'
 #    become: yes
