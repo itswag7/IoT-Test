@@ -11,11 +11,11 @@
       path: /opt/xom/kerberos/{{tenant_camera}}/configs
       state: directory
    
-   - name: Download kerberos configs
-     get_url:
-       url: https://github.com/kerberos-io/docker/tree/master/bin/template
-       dest: /opt/xom/kerberos/{{tenant_camera}}/configs
-       mode: 0440
+  - name: Download kerberos configs
+    get_url:
+      url: https://github.com/kerberos-io/docker/tree/master/bin/template
+      dest: /opt/xom/kerberos/{{tenant_camera}}/configs
+      mode: 0440
   
   - name: Start Kerberos
     docker_container:
